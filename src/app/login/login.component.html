@@ -1,0 +1,85 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<section id="section" class="vh-80 gradient-custom">
+    <div class="container h-100">
+      
+      <div class="row d-flex justify-content-center align-items-center h-60">
+        
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div id="formulaire" class="card mt-3">
+            <div class="card-body p-5 text-center">
+              <form (ngSubmit)="SignInUser()">
+              <div class="pb-2">
+  
+                <h2 class="fw-bold mb-2 text-uppercase">Login</h2>
+
+                          
+
+                <div class="form-outline form-white mb-4">
+                    <label class="custom-form-label" for="typeEmail">Email</label>
+                  <input type="email" [(ngModel)]="model.Email" name="email" id="idtypeEmail" class="form-control form-control-lg" placeholder="Email" />
+                 
+                </div>
+               
+                <div class="form-outline form-white mb-4">
+                        <label class="custom-form-label" for="typePasswordX">Password</label>
+                        <input type="password" [(ngModel)]="model.Password" name="password" id="idPassword" class="form-control form-control-lg" placeholder="Password"/>
+                      </div>
+                  
+                  
+                <!-- <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p> -->
+  
+                <button class="btn btn-outline-light px-5 mt-3" id="idLogin" type="submit" >Login</button>
+              
+              </div>
+              </form>
+              <div>
+                <p class="mb-0 mt-2">I Don't have an account<a routerLink="/registration" class="text-gray-50 fw-bold">Sign Up</a>
+                </p>
+              </div>
+  
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  
+    <div class="wave-container mt-n2">
+      <svg
+        class="waves"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 24 150 28"
+        preserveAspectRatio="none"
+        shape-rendering="auto">
+        <defs>
+          <path
+            id="gentle-wave"
+            d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
+          />
+        </defs>
+        <g class="parallax">
+          <!-- Wave Paths -->
+          <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7)" />
+          <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+          <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+          <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+        </g>
+      </svg>
+  
+      <!-- Multiple Book Icons -->
+    
+    </div>
+  
+  </section>
+
+
+
+
+
+
+
+
+
+
+  

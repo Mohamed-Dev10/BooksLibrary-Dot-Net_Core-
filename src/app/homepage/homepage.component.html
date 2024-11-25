@@ -1,0 +1,46 @@
+<div class="container">
+    <div class="row mt-5">
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-body">
+            <img src="https://via.placeholder.com/150" alt="Profile Picture" class="rounded-circle mx-auto d-block mb-3">
+            <!-- <h3 class="text-center" >Welcome, {{ username }}!</h3> -->
+           
+            <hr>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item"><a routerLink="/space-books" class="text-decoration-none">Books Library</a></li>
+              <li class="list-group-item"><a routerLink="/settingsuser" class="text-decoration-none">Settings</a></li>
+              <li class="list-group-item"><a routerLink="logout" class="text-decoration-none" (click)="signOut()">
+
+                Logout</a></li>
+            </ul>
+            
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-9">
+        <div class="card">
+          <div class="card-body">
+            <h4 class="card-title">Profile Information</h4>
+            <hr>
+            <div class="row">
+              <div class="col-md-6">
+                <p><strong>First Name: </strong>{{ firstname }}</p>
+                <p><strong>Last Name: </strong>{{ lastname }}</p>
+                <p><strong>Email: </strong>{{ email }}</p>
+                <!-- <p><strong>Email: </strong>{{ email }}</p> -->
+                <!-- <p><strong>Phone: </strong>{{phonenumber}}</p> -->
+              </div>
+              <div class="col-md-6">
+              
+                <p><strong>Joined: </strong>January 1, 2022</p>
+              </div>
+            </div>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

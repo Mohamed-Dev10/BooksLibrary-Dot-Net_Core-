@@ -1,0 +1,117 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+<section id="section" class="vh-80 gradient-custom">
+    <div class="container h-100">
+      
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5">
+          <div id="formulaire" class="card mt-2">
+            <div class="card-body p-5 text-center">
+              <form (ngSubmit)="RegisterUser()">
+              <div class="pb-2">
+  
+                <h2 class="fw-bold mb-2 text-uppercase">Registration</h2>
+
+                <div class="form-outline form-white mb-4">
+                  <div class="row">
+                    <div class="col-md-6">
+                      <label class="custom-form-label" for="FirstName">First name</label>
+                      <input type="text" [(ngModel)]="model.firstname" name="firstname" id="idFirstName" class="form-control form-control-lg" placeholder="First"/>
+                    </div>
+                    <div class="col-md-6">
+                      <label class="custom-form-label" for="idLastName">Last name</label>
+                      <input type="text" [(ngModel)]="model.lastname" name="lastname" id="idLastName" class="form-control form-control-lg" placeholder="Last"/>
+                    </div>
+                  </div>
+                </div>                
+
+                <div class="form-outline form-white mb-4">
+                    <label class="custom-form-label" for="typeEmail">Email</label>
+                  <input type="email" [(ngModel)]="model.email" name="email" id="idtypeEmail" class="form-control form-control-lg" placeholder="Email" />
+                 
+                </div>
+                <div class="form-outline form-white mb-4">
+                    <label class="custom-form-label" for="idProfilName">Username</label>
+                    <input type="text" [(ngModel)]="model.username"  name="username" id="idUserName" class="form-control form-control-lg" placeholder="Username"/>
+                  
+                  </div>
+                  <!-- <div class="form-outline form-white mb-4">
+                    <label class="form-label" for="idProfilName">Phone Number</label>
+                    <input type="text" [(ngModel)]="model.PhoneNumber"  name="PhoneNumber" id="idPhoneNumber" class="form-control form-control-lg" />
+                  
+                  </div> -->
+                  <div class="row">
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline form-white">
+                        <label class="custom-form-label" for="typePasswordX">Password</label>
+                        <input type="password" [(ngModel)]="model.password" name="password" id="idPassword" class="form-control form-control-lg"
+                          placeholder="Password"/>
+                      </div>
+                    </div>
+                    <div class="col-md-6 mb-4">
+                      <div class="form-outline form-white">
+                        <label class="custom-form-label" for="typePasswordX">Confirm password</label>
+                        <input type="password" [(ngModel)]="model.confirmPassword" name="confirmPassword" id="idConfirmPassword" placeholder="Confirm password"
+                          class="form-control form-control-lg" />
+                      </div>
+                    </div>
+                  </div>
+                  
+                <!-- <p class="small mb-5 pb-lg-2"><a class="text-white-50" href="#!">Forgot password?</a></p> -->
+  
+                <button class="btn btn-outline-light px-5 mt-3" type="submit" id="registerBtn">Register</button>
+              
+              </div>
+              </form>
+              <div>
+                <p class="mb-0 mt-2">Already have an account <a routerLink="/login" class="text-gray-50 fw-bold">Sign In</a>
+                </p>
+              </div>
+  
+            </div>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  
+    <div class="wave-container">
+      <svg
+        class="waves"
+        xmlns="http://www.w3.org/2000/svg"
+        xmlns:xlink="http://www.w3.org/1999/xlink"
+        viewBox="0 24 150 28"
+        preserveAspectRatio="none"
+        shape-rendering="auto"
+      >
+        <defs>
+          <path
+            id="gentle-wave"
+            d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z"
+          />
+        </defs>
+        <g class="parallax">
+          <!-- Wave Paths -->
+          <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7)" />
+          <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+          <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+          <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+        </g>
+      </svg>
+  
+      <!-- Multiple Book Icons -->
+    
+    </div>
+  
+  </section>
+
+
+
+
+
+
+
+
+
+
+  

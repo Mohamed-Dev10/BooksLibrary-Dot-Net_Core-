@@ -1,0 +1,99 @@
+<form (submit)="addBook()" enctype="multipart/form-data">
+  <div class="form-group">
+    <label>Title</label>
+    <input type="text" class="form-control" name="titleBook" [(ngModel)]="bookForm.titleBook"  required>
+  </div>
+  <div class="form-group">
+    <label>Description</label>
+    <textarea class="form-control" name="descriptionBook" [(ngModel)]="bookForm.descriptionBook" required></textarea>
+  </div>
+
+  <div class="form-group">
+    <label>Book File</label>
+    <input class="form-control" type="file" (change)="onFileSelected($event)" name="imgBook"  required>
+  </div>
+  
+  <div class="form-group">
+    <label>Book Cover</label>
+    <input class="form-control" type="file" (change)="onFileSelectedImg($event)" name="PictureBook"  required>
+  </div>
+  <div class="form-group">
+    <label>Author</label>
+    <select id="authorSelect" name="auth"  required [(ngModel)]="bookForm.auth">
+      <option value="">Select an author</option>
+      <option *ngFor="let author of authors" [value]="author.objectid"> {{author.nameAuthor}} </option>
+    </select>
+  </div>
+ 
+  <button type="submit" class="btn btn-primary">Add Book</button>
+</form>
+
+
+<table>
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Book Cover</th>
+      <th>Author</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let book of books">
+      <td class="actions-column">{{ book.titleBook }}</td>
+      <td class="actions-column">{{ book.descriptionBook }}</td>
+      <td class="actions-column">
+        <!-- Display the book cover with the updated fileUrl -->
+        <img [src]="book.fileUrl" alt="Book Cover" [width]="100" height="100px" download>
+      </td>
+      <td class="actions-column">{{ book.author.nameAuthor }}</td>
+      <td class="actions-column">
+        <button class="buttonUpdate" data-target="#updateBookModal" (click)="showModal(book.objectid)">Update</button>
+        <button class="buttonDelete" (click)="deleteBook(book.objectid)">Delete</button>
+        <button class="buttonPrint"><a (click)="downloadFile()">Download</a></button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+        
+<div class="modal fade"  id="updateBookModal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Update Book</h5>
+        <button type="button" class="close" (click)="HideModal()" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <div class="modal-body">
+        <form (submit)="UpdateBook()">
+          <div class="form-group">
+            <label for="recipient-name" class="col-form-label">Title:</label>
+            <input type="text" class="form-control" name="titleBook" [(ngModel)]="bookFormUpdate.titleBook" [value]="bookFound.titleBook">
+          </div>
+          <div class="form-group">
+            <label for="message-text" class="col-form-label">Description:</label>
+            <textarea class="form-control" name="descriptionBook" [(ngModel)]="bookFormUpdate.descriptionBook" [value]="bookFound.descriptionBook"></textarea>
+          </div>
+          <div class="form-group">
+            <label>Author</label>
+            <select name="author" [(ngModel)]="bookFormUpdate.author">
+              <option *ngFor="let author of authors" [ngValue]="author">
+                {{ author.nameAuthor }}
+              </option>
+            </select>
+         
+          </div>
+          <div class="modal-footer">
+       
+            <button type="submit" class="buttonUpdate">Update</button>
+          </div>
+        </form>
+      </div>
+      
+    </div>
+  </div>
+</div>

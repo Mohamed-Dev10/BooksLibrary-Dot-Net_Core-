@@ -1,0 +1,282 @@
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+
+
+  <section id="section" class="gradient-custom">
+    
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a class="navbar-brand" >
+          <img src="/assets/BooksCover/Logo.PNG" class="logo-image offset-md-10 mt-2">
+        </a>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link vlink rounded" routerLink="/space-books">
+                <i class="fas fa-home"></i>
+                <span>Home</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link vlink rounded" href="#">
+                <i class="fas fa-star zoom-icon"></i>
+                <span>Top Books</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link vlink rounded" href="#">
+                <i class="fas fa-book-open zoom-icon"></i>
+                <span>New Books</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link vlink rounded" href="#">
+                <i class="fas fa-search zoom-icon"></i>
+                <span>Search</span>
+              </a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link vlink rounded" href="#">
+                <i class="fas fa-info-circle zoom-icon"></i>
+                <span>About Us</span>
+              </a>
+              
+            </li>
+          
+          </ul>
+         
+           
+       
+        </div>
+      </div>
+    </nav>
+    
+
+
+    <div class="vh-100 d-flex align-items-center position-fixed start-0 top-0" role="navigation">
+      <div class="p-2 mt-4">
+        <div id="mainNav">
+          
+          <ul class="list-unstyled rounded ms-2 mt-4">
+
+            <li><a class="vlink rounded border-0" href="#"><i class="fas fa-user"></i> <span> {{ username }}</span></a></li>
+            <li><a  routerLink="/settingsuser" class="vlink rounded" href="#"><i class="fas fa-cog"></i>  <span> Settings</span></a></li>
+            <li> <a class="nav-link vlink rounded" href="#">
+              <i class="fas fa-shopping-cart zoom-icon"></i>
+              <span>Order Book</span>
+            </a></li>
+           
+            <li><a class="vlink rounded" routerLink="logout" (click)="signOut()"> <i class="fas fa-sign-out-alt"></i> <span> Log Out</span></a></li>
+            
+          </ul>
+        </div>
+      </div>
+    </div>
+    
+    <div class="container mt-4">
+      <div class="row">
+        <div class="col-md-9 offset-md-2 mt-4">
+          <div class="row">
+            <!-- Book Image and Title -->
+            <div class="col-md-5 col-sm-6 mt-4">
+              <div class="box position-relative" *ngIf="book">
+                <img class="card-img-top border border-dark" [src]="book.imgUrl">
+                
+                <div class="box-content">
+                  <h3 class="title">{{ book.titleBook }}</h3>
+                </div>
+                
+                <div class="small-ratings">
+                  <i class="fa fa-star rating-color"></i>
+                  <i class="fa fa-star rating-color"></i>
+                  <i class="fa fa-star rating-color"></i>
+                  <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i>
+                </div>
+                
+              </div>
+
+            
+              <div class="d-flex" *ngIf="book">
+                <ul class="list-unstyled d-flex rounded mt-4 mr-3">
+                  <li><a class="vlink rounded border-0"  (click)="SaveBookToFavo(book.objectid,userid)"><i class="fas fa-save"></i> <span> Save</span></a></li>
+                </ul>
+                <ul class="list-unstyled d-flex rounded mt-4 mr-3 offset-md-2">
+                  <li><a (click)="downloadFile(book.fileUrl,$event)" target="_self" class="vlink rounded border-0"><i class="fas fa-download"></i> <span> Download</span></a></li>
+                </ul>
+                <ul class="list-unstyled d-flex rounded mt-4 offset-md-3">
+                  <li><a class="vlink rounded" (click)="toggleCollapse()"><i class="fas fa-book-reader"></i>  <span> Read </span></a></li>
+                </ul>
+              </div>
+              
+            </div>
+            
+            <!-- First Set of Cards -->
+            <div class="col-md-7 col-sm-6 mt-4">
+              <div class="d-flex flex-row">
+                <div class="card col-md-12">
+                  <div class="card-header">
+                    Summary idea
+                  </div>
+                  <div class="card-body" *ngIf="book">
+                    <blockquote class="blockquote mb-0">
+                      <p> {{ book.descriptionBook }}</p>
+                      <footer class="blockquote-footer">Published in  <cite title="Source Title"> 12/05/2023</cite> Created by <cite title="Source Title">Roger Stevens </cite></footer>
+                    </blockquote>
+                  </div>
+                </div>
+
+                
+              </div>
+              
+              <div class="d-flex flex-row mt-2">
+                <div class="card col-md-12">
+                  <div class="card-header">
+                    Choose your evaluation of the book with us.
+                    
+                  </div>
+                  <div class="card-body" *ngIf="book">
+                    <div class="form-group d-flex">
+                     
+                      <div class="media add_rating_box offset-md-3">
+                        <div class="media-body">
+                          <div class="choos-star-box">
+                           
+                            <div *ngIf="!ratingsArraByBook">
+                              <ng-container *ngFor="let rating of ratingsArray">
+                                <a href="#" (click)="SaveRatingBook(book.objectid, userid, rating, $event)" [class.active]="selectedRating >= rating" [class.inactive]="selectedRating < rating">
+                                  <i class="fa fa-star"></i>
+                                </a>
+                              </ng-container>
+                            </div>
+                          </div>
+                          
+                          <div class="display-star-box" *ngIf="ratingsArraByBook">
+                            <ng-container *ngFor="let star of getStarsFromDatabase(ratingsArraByBook.ratingNumber)">
+                              <a href="#" (click)="updateRating(book.objectid, userid, ratingsArraByBook.ratingNumber, $event)"> 
+                                <i class="fa fa-star" [class.active]="star.selected"></i>
+                              </a>
+                            </ng-container>
+                          </div>
+                          
+                          
+                          
+                        </div>
+                        
+                      </div>
+                  
+                    </div>
+                   
+                  </div>
+                </div>
+
+                
+              </div>
+             
+              <div class="d-flex flex-row mt-2">
+                <div class="card col-md-12">
+                  <div class="card-header">
+                    About the book
+                    
+                  </div>
+                   <!-- card1 -->
+                   <div class="row" *ngIf="book">
+                    <!-- card1 -->
+                    <div class="col-md-3" style="flex: 0 0 auto;width: 24%;">
+      <div class="card card-circle" style="scale: 0.8;">
+        <div class="card-icon">
+           <i class="fas fa-download"></i>
+        </div>
+        <p class="card-text" style="width: 120px;margin-left: -60px;margin-top: 10px;">{{ book.numberDownlaods }}</p>
+     </div>
+    </div>
+     <!-- card2 -->
+     <div class="col-md-3" style="flex: 0 0 auto;width: 24%;">
+     <div class="card card-circle" style="scale: 0.8;">
+        <div class="card-icon">
+           <i class="fas fa-eye"></i>
+        </div>
+        <p class="card-text" style="width: 120px;margin-left: -60px;margin-top: 10px;">{{ book.numberViews }}</p>
+     </div>
+    </div>
+     <!-- card3 -->
+     <div class="col-md-3" style="flex: 0 0 auto;width: 24%;">
+       <div class="card card-circle" style="scale: 0.8;">
+      <div class="card-icon">
+         <i class="fas fa-book"></i>
+      </div>
+      <p class="card-text" style="width: 120px;margin-left: -60px;margin-top: 10px;">{{ book.numberPage }} Pages</p>
+   </div></div>
+   <div class="col-md-3" style="flex: 0 0 auto;width: 24%;">
+    <div class="card card-circle" style="scale: 0.8;">
+      <div class="card-icon text-center">
+         <i class="fas fa-language"></i>
+         
+      </div>
+      <p class="card-text" style="width: 120px;margin-left: -60px;margin-top: 10px;">{{ book.language }}</p>
+   </div>
+   </div>
+  </div>
+    
+                 
+                </div>
+              </div>
+            </div>
+            
+          
+          </div>
+        </div>
+        <div class="d-flex flex-row mt-2">
+
+          <div class="card col-md-11">
+            <div class="card-body" *ngIf="isCollapsed && book && sanitizedUrl">
+                    <iframe [src]="sanitizedUrl" type="application/pdf" width="100%" height="500px"></iframe>
+                  </div>
+             </div>
+           </div>
+
+    
+
+
+        <div class="d-flex flex-row mt-2">
+          <div class="card col-md-11" *ngIf="book">
+            <form (submit)="SaveCommentBook(book.objectid,userid)">
+            <div class="card-header">
+              Add Comment:
+             </div>
+             <div class="card-body">
+               <textarea class="form-control" name="description" [(ngModel)]="description" rows="4" placeholder="Enter your comment"></textarea>
+               <button type="submit" class="btn btn-primary mt-2">Comment</button>
+             </div>
+            </form>
+            <div class="card-header">
+             Others Comments About this Book:
+            </div>
+            
+            <div class="card-body d-flex align-items-center" *ngFor="let comment of commentsBook">
+              <div class="card card-circle" style="transform: scale(0.7);">
+                <div class="card-icon">
+                  <i class="fas fa-download"></i>
+                </div>
+               
+              </div>
+              <div class="card col-md-10" >
+                <h6 class="textarea-header">{{ comment.user}} </h6>
+              <textarea class="form-control" rows="4" placeholder="Enter your comment">{{ comment.description }}</textarea>
+            </div>
+            </div>
+           
+          
+          </div>
+        </div>
+      </div>
+    </div>
+    
+
+</section>

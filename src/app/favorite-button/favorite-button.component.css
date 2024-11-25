@@ -1,0 +1,14 @@
+/* Favorite Button Style */
+.favorite-button {
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 24px;
+  color: #ccc; /* Default color for unfavorite state */
+  transition: color 0.3s ease; /* Smooth color transition on hover */
+}
+
+.favorite-button:hover {
+  color: #f44336; /* Color when button is hovered, change to your desired color */
+}

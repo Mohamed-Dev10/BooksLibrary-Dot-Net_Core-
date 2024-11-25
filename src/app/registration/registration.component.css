@@ -1,0 +1,124 @@
+.gradient-custom {
+    /* fallback for old browsers */
+    background: linear-gradient(to bottom, #87CEEB, #fff);
+    }
+
+    #registerBtn{
+        color:white;
+        background-color: #999973;
+    }
+
+    #formulaire{
+        color: rgb(52, 52, 52);
+        background-color: #ffffff;
+        box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+        border-radius: 0rem;
+        z-index: 999;
+    }
+    ::placeholder {
+            color: rgb(181, 181, 181);
+            font-size: 0.9rem;
+    }
+
+    .wave-container {
+        position: absolute;
+        width: 100%;
+        height: 50%; /* Adjust the height as needed */
+        bottom: 0;
+        left: 0;
+        overflow: hidden;
+      }
+    .waves {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+      }
+      .book-icon {
+        position: absolute;
+        font-size: 24px;
+        color: green;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+      animation: waveAnimation 4s infinite linear;
+      }
+      @keyframes waveAnimation {
+        0%, 100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-10px);
+        }
+      }
+      .content {
+        position: relative;
+        height: 20vh;
+        text-align: center;
+        background-color: white;
+      }
+      
+      /* Animation */
+      
+      .parallax > use {
+        animation: move-forever 25s cubic-bezier(0.55, 0.5, 0.45, 0.5) infinite;
+      }
+      
+      .parallax > use:nth-child(1) {
+        animation-delay: -2s;
+        animation-duration: 7s;
+      }
+      
+      .parallax > use:nth-child(2) {
+        animation-delay: -3s;
+        animation-duration: 10s;
+      }
+      
+      .parallax > use:nth-child(3) {
+        animation-delay: -4s;
+        animation-duration: 13s;
+      }
+      
+      .parallax > use:nth-child(4) {
+        animation-delay: -5s;
+        animation-duration: 20s;
+      }
+      
+      .custom-form-label {
+        float: left;
+        margin-right: 10px; 
+        margin-top: 10px;
+        margin-bottom: 5px;
+      }
+      
+      @keyframes move-forever {
+        0% {
+          transform: translate3d(-90px, 0, 0);
+        }
+      
+        100% {
+          transform: translate3d(85px, 0, 0);
+        }
+      }
+      
+      /* /* Shrinking for mobile */
+      @media (max-width: 768px) {
+        .waves {
+          height: 40px;
+          min-height: 40px;
+        }
+      
+        .content {
+          height: 30vh;
+        }
+      
+        h1 {
+          font-size: 24px;
+        }
+      }
+
+      
+      
+
+    
